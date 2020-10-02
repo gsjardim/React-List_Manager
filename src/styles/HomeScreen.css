@@ -1,0 +1,65 @@
+
+
+#main-container {
+    max-width: 70%;
+    height: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.menus {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;/* !important;
+    By Adding the word important, I make this specific stype first priority above any other
+    */
+    font-family: Arial, Helvetica, sans-serif;
+    color: indigo;
+}
+
+
+.login {
+    margin-right: 20px;
+}
+
+#presentation-box {
+    background-color: var(--main-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 30px;
+    height: 93%;
+}
+
+#presentation-box h2 {
+    font-family: 'Noto Serif JP', Arial, monospace; /*The second parameter is a default font that will be used if the first option has a problem loading*/
+    font-size: 50px;
+    color: var(--font-light-color);
+}
+
+#box-left-side {
+    margin-right: 35px;
+}
+
+#start-button {
+    background-color: var(--font-light-color);
+    color: var(--font-dark-color);
+    font-size: 18px;
+    margin-top: 50px;
+    height: 40px;
+    width: 120px;
+    border: none;
+}
+/*
+In case we need to use an attribute as a css selector:
+
+Ex: [type='button'] {
+        ...Css properties...
+    }
+*/

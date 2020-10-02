@@ -1,0 +1,49 @@
+:root {
+  --main-color: #365036;
+  --secondary-color: #365036;
+  --font-dark-color: #3b3b3b;
+  --font-light-color: #e0ecde;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh; /*vh = viewport height
+  this means: the body and html occupies 100 units of the viewport*/
+  background-color: rgb(243, 243, 243);
+}
+
+
+#root {
+    height: 100vh;
+    width: 100vw;
+}
+
+/*
+  For Grid displays, use the following properties:
+
+  {
+    display: grid; -> activates the grid mode
+
+    grid-template-columns: 1fr 100px 2fr; -> This tells the browser that there will be 3 columns.
+    The first and third one take up the remaining space left by the second one, which
+    is set to 100px. The first will take one third of the horizontal space and the third one
+    will take two thirds.
+
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+    Or
+    grid-gap: 10px 20px; (first is rows, second is column)
+
+    grid-column: 2 / 4; (this element will start at the the second column and finish at the third column. The second number is = end_column_number + 1)
+
+  }
+  
+  */
