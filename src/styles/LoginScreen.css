@@ -1,4 +1,57 @@
 .main-container {
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--main-color);
+    border-radius: 5%;
+    font-family: var(--main-font-family);
+    width: 35%;
+    height: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+}
+
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.labelText {
+    margin-right: 6px;
+    font-size: 16pt;
+}
+
+.input-box {
+    width: 400px;
+    height: 40px;
+    font-size: 14pt;
+    font-family: var(--main-font-family);
+    background-color: white;
+    padding: 5px;
+
+}
+
+#login-button {
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 0;
+    font-size: 20px;
+}
+
+div .password-field {
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
+
+.eye-icon {
+    position: relative;
+     margin-left: -30px;
+    
+}
+
+
