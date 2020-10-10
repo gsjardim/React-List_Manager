@@ -22,9 +22,9 @@ function HomeScreen(props) {
     return (
         <div id="main-container">
             <div className="menus">
-                <div id="main-menu">
+                {/* <div id="main-menu">
                     <p >Menu</p>
-                </div>
+                </div> */}
                 <div id="login-menus">
                     <span className="login">
                         <Link to="/login" className="login">Login</Link>

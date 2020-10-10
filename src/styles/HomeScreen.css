@@ -15,7 +15,7 @@
 .menus {
     display: flex; 
     flex-direction: row;
-    justify-content: space-between;/* !important;
+    justify-content: flex-end;/* !important;
     By Adding the word important, I make this specific stype first priority above any other
     */
     font-family: Arial, Helvetica, sans-serif;

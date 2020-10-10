@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
-import { LoginScreen, SignUpScreen } from './screens/LoginScreen';
+import { LoginScreen } from './screens/LoginScreen';
+import { SignUpScreen } from './screens/SignupScreen';
 import { ListsMainScreen } from './screens/ListsMainScreen';
 import { ErrorScreen } from './screens/ErrorScreen';
 
