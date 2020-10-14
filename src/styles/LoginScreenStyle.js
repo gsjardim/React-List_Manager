@@ -7,31 +7,32 @@ export const LoginScreenStyle = {
         borderColor: colors.mainColor,
         borderWidth: "2px",
         borderStyle: "solid",
-        borderRadius: "5%",
+        borderRadius: "2%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         fontFamily: fonts.mainFontFamily,
         width: "35%",
-        height: "60%",
+        height: "45%",
         marginLeft: "auto",
         marginRight: "auto",
-        paddingTop: "4%"
+        paddingTop: "4%",
+        minWidth: "300px",
+        minHeight: "400px"
         
     },
 
     form : {
-        width: "100%",
+        width: "70%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
     },
     
     inputContainer: {
         display: "flex",
         flexDirection: "column",
         marginBottom: "15px",
-        width: "80%"
+        width: "100%"
     },
     
     labelText: {
