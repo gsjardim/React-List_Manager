@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import '../styles/main.css';
-import '../styles/LoginScreen.css'
-import { LoginScreenStyle as styles } from '../styles/LoginScreenStyle'
+import { SignupScreenStyle as styles } from '../styles/SignupScreenStyle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 
-export function LoginScreen() {
+
+export function SignUpScreen() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isChecked, setIsChecked] = useState(false)
     const [revealPassword, setRevealPassword] = useState(false)
 
     const handleSubmit = () => {
@@ -22,11 +21,11 @@ export function LoginScreen() {
     }
 
     return (
-        <div id="mainContainer" style={styles.mainContainer}>
+        <div id="main-container" style={styles.mainContainer} >
 
-            <form id="login-form" onSubmit={handleSubmit} style={styles.form} >
+            <form id="login-form" style={styles.form}>
                 <div id="email-input-container" style={styles.inputContainer}>
-                    <label style={styles.labelText} >E-mail</label>
+                    <label style={styles.labelText}>E-mail</label>
                     <input
                         type='email'
                         id="email-input"
@@ -37,16 +36,16 @@ export function LoginScreen() {
                         onChange={text => setEmail(text.target.value)}
                     />
                 </div>
-                <div id="password-input-container" style={styles.inputContainer} >
+                <div id="password-input-container" style={styles.inputContainer}>
                     <label style={styles.labelText}>Password</label>
-                    <div id="password-field" style={styles.passwordField} >
+                    <div id="password-field" style={styles.passwordField}>
                         <input
                             type={revealPassword ? "text" : "password"}
                             id="password-input"
                             className="input-box"
                             name="password-input"
                             value={password}
-                            style={styles.passwordInput }
+                            style={styles.passwordInput}
                             onChange={text => setPassword(text.target.value)}
                         />
                         <span id="reveal-password" onClick={() => toggleRevealPassword(revealPassword)}>
@@ -59,18 +58,31 @@ export function LoginScreen() {
                         </span>
                     </div>
                 </div>
-                <div >
-                    <label style={styles.labelText} >Remember me</label>
-                    <input
-                        id="remember-me-checkbox"
-                        name="remember-me-checkbox"
-                        type='checkbox'
-                        value={isChecked}
-                        onChange={action => setIsChecked(!action.target.value)}
-                    />
+                <div id="conf-passwd-input-container" style={styles.inputContainer}>
+                    <label style={styles.labelText}>Confirm password</label>
+                    <div style={styles.passwordField}>
+                        <input
+                            type={"password"}
+                            id="conf-password-input"
+                            className="input-box"
+                            name="conf-password-input"
+                            value={password}
+                            style={styles.passwordInput}
+                            onChange={text => setPassword(text.target.value)}
+                        />
+
+                    </div>
                 </div>
 
-                <button id="login-button" type='submit' style={styles.loginButton}>Login</button>
+
+                <button
+                    id="signUp-button"
+                    type='submit'
+                    onClick={() => handleSubmit()}
+                    style={styles.signupButton}
+                >
+                    Sign up
+                </button>
             </form>
 
         </div>

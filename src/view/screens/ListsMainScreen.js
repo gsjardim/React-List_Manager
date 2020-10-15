@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ListsMainStyle as styles } from '../styles/ListsMainStyle'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { CreateListButton } from '../components/createListButton'
 
 export function ListsMainScreen() {
     //Temporary data
     let userName = "Guilherme";
     let listCount = 5;
+
+    const [lists, setLists] = useState([]);
+
+    const addList = (list) => {
+        let newLists = [...lists, list]
+        setLists(newLists)
+    }
 
     return (
         <div style={styles.mainContainer} >
@@ -27,29 +33,37 @@ export function ListsMainScreen() {
                         id="welcome-line"
                     >{`Welcome ${userName}. You have ${listCount} lists.`}</h3>
                 </span>
-                <button type="button" style={styles.createNewButton}>
-                    <FontAwesomeIcon icon={faPlus} style={styles.plusIcon} />
-                    Create New
-                </button>
+                <CreateListButton addList={addList.bind(this)} />
             </div>
 
             <div id="lists-container" style={styles.listsContainer}>
                 <table style={styles.table}>
-                    <tr style={{backgroundColor: "rgba(47, 229, 36, 0.6)"}}>
-                        <th style={styles.tableCell}>List name</th>
-                        <th style={styles.tableCell}>Total tems</th>
-                        <th style={styles.tableCell}>Overdue items</th>
-                    </tr>
-                    <tr style={{textAlign: "center"}}>
+                    {
+                        lists.map((row) => {
+                            return row
+                        })
+                        // lists.length > 0 ?
+                        //     <tr style={{ backgroundColor: "rgba(47, 229, 36, 0.6)" }}>
+                        //         <th style={styles.tableCell}>List name</th>
+                        //         <th style={styles.tableCell}>Total tems</th>
+                        //         <th style={styles.tableCell}>Overdue items</th>
+                        //     </tr>
+
+
+                        //     :
+                        //     null
+                    }
+
+                    {/* <tr style={{ textAlign: "center" }}>
                         <td style={styles.tableCell} >Pendencias</td>
                         <td style={styles.tableCell}>10</td>
                         <td style={styles.tableCell}>0</td>
                     </tr>
-                    <tr style={{textAlign: "center"}}>
+                    <tr style={{ textAlign: "center" }}>
                         <td style={styles.tableCell}>Shopping</td>
                         <td style={styles.tableCell}>5</td>
                         <td style={styles.tableCell}>1</td>
-                    </tr>
+                    </tr> */}
                 </table>
             </div>
 

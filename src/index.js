@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HomeScreen from './screens/HomeScreen';
-import { LoginScreen } from './screens/LoginScreen';
-import { SignUpScreen } from './screens/SignupScreen';
-import { ListsMainScreen } from './screens/ListsMainScreen';
-import { ErrorScreen } from './screens/ErrorScreen';
+import HomeScreen from './view/screens/HomeScreen';
+import { LoginScreen } from './view/screens/LoginScreen';
+import { SignUpScreen } from './view/screens/SignupScreen';
+import { ListsMainScreen } from './view/screens/ListsMainScreen';
+import { ErrorScreen } from './view/screens/ErrorScreen';
 
 ReactDOM.render(
   /**

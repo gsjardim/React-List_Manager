@@ -35,22 +35,10 @@ export const ListsMainStyle = {
         marginBottom: "3%"
     },
 
-    createNewButton: {
-        backgroundColor: "#FFFFFFFF",
-        border: "0",
-        fontSize: "20px",
-        fontFamily: fonts.mainFontFamily
-    },
-
-    plusIcon: {
-        color: "green",
-        marginRight: "8px"
-    },
-
     listsContainer: {
         width: "60%",
         marginTop: "3%",
-        boxShadow: "4px 4px 8px 4px rgba(0, 0, 0, 0.3)"
+        boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.3)"
     },
 
     table: {

@@ -1,7 +1,7 @@
 /*HomeScreen*/
 
-import '../styles/HomeScreen.css';
 import '../styles/main.css';
+import { HomeStyle as styles } from '../styles/HomeStyle'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -20,13 +20,11 @@ function HomeScreen(props) {
     }
 
     return (
-        <div id="main-container">
-            <div className="menus">
-                {/* <div id="main-menu">
-                    <p >Menu</p>
-                </div> */}
+        <div id="main-container" style={styles.mainContainer}>
+            <div style={styles.menus} >
+                
                 <div id="login-menus">
-                    <span className="login">
+                    <span style={styles.login}>
                         <Link to="/login" className="login">Login</Link>
                     </span>
                     <span>
@@ -36,17 +34,22 @@ function HomeScreen(props) {
                 </div>
             </div >
 
-            <div id="presentation-box">
-                <div id="box-left-side">
-                    <h2>Don't miss anything.</h2>
-                    <h2>Get organized with<br />Easy List Manager</h2>
-                    <button type="button" id="start-button" onClick={()=> handleStartButtonClick()}>Start Now</button>
+            <div id="presentation-box" style={styles.presentationBox}>
+                <div id="box-left-side" style={styles.boxLeftSide}>
+                    <h2 style={styles.presentationBoxH2} >Don't miss anything.<br/>
+                    Get organized with<br />Easy List Manager</h2>
+                    <button 
+                        type="button" 
+                        id="start-button" 
+                        onClick={()=> handleStartButtonClick()}
+                        style={styles.startButton}
+                        >Start Now</button>
                 </div>
                 <div id="box-right-side">
                     <img
                         src="https://miro.medium.com/max/1200/1*w92wMLwBGlgfhIDa-AhGmg.png"
                         alt="Notes"
-                        width="250px" //When we change one dimension, the other will change proportionally too
+                        style={styles.notesImage} 
                     />
                 </div>
             </div>
