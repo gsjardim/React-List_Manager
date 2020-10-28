@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HomeScreen from './view/screens/HomeScreen';
+import { HomeScreen } from './view/screens/HomeScreen';
 import { LoginScreen } from './view/screens/LoginScreen';
 import { SignUpScreen } from './view/screens/SignupScreen';
 import { ListsMainScreen } from './view/screens/ListsMainScreen';
 import { ErrorScreen } from './view/screens/ErrorScreen';
+import { ListViewScreen } from './view/screens/ListViewScreen';
 
 ReactDOM.render(
   /**
@@ -27,6 +28,7 @@ function App(){
       <Route path="/login" component={LoginScreen} exact/>
       <Route path="/signup" component={SignUpScreen} exact/>
       <Route path="/lists" component={ListsMainScreen} exact/>
+      <Route path="/my-list" component={ListViewScreen} exact/>
       <Route component={ErrorScreen} />
     </Switch>
   )

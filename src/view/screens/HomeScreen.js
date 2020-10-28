@@ -5,7 +5,7 @@ import { HomeStyle as styles } from '../styles/HomeStyle'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function HomeScreen(props) {
+export function HomeScreen(props) {
 
     var handleStartButtonClick = function(){
         
@@ -58,6 +58,3 @@ function HomeScreen(props) {
     );
 }
 
-
-
-export default HomeScreen;
