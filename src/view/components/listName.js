@@ -12,15 +12,20 @@ const styles = {
     },
 
     nameInput: {
-        color: "#b7b795"
+        color: "#b7b795",
+        marginRight: "8px",
+        fontSize: "25px",
+        height: "40px",
     },
 
     saveButton: {
-        backgroundColor: "pink"
+        backgroundColor: "#80ffaa",
+        width: "120px",
+        fontWeight: "800"
     },
 
     listTitle: {
-        margin: "3% 0 1.5% 0",
+       
         display: "flex",
         flexDirection: "row",
         alignItems: "center"
@@ -42,16 +47,16 @@ const styles = {
     },
 }
 
-export function ListName() {
+export function ListName(props) {
 
-    const [name, setName] = useState('List Name');
+    const [name, setName] = useState(props.defaultName);
     const [isEditMode, toggleEditMode] = useState(false);
 
     const handleClick = () => {
         toggleEditMode(!isEditMode)
     }
 
-    
+
     return (
         <div className="list-title" style={styles.listTitle}>
             {isEditMode ?
@@ -63,21 +68,24 @@ export function ListName() {
                     />
                     <button
                         style={styles.saveButton}
-                        onClick={()=>handleClick()}
+                        onClick={() => handleClick()}
                     >
                         Save
                     </button>
                 </div>
                 :
-                <span style={styles.listTitleText}>{name}</span>
+                <div>
+                    <span style={styles.listTitleText}>{name}</span>
+                    <button
+                        style={styles.editListButton}
+                        onClick={() => handleClick()}
+                    >
+                        <FontAwesomeIcon icon={faEdit} style={styles.editListIcon} />
+                    </button>
+                </div>
             }
 
-            <button
-                style={styles.editListButton}
-                onClick={() => handleClick()}
-            >
-                <FontAwesomeIcon icon={faEdit} style={styles.editListIcon} />
-            </button>
+
 
         </div>
     )

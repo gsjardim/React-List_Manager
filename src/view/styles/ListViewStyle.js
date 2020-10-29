@@ -13,6 +13,12 @@ export const ListViewStyle = {
         padding: "30px 15px",
     },
 
+    modalStyle: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+
     menus: {
         display: "flex",
         flexDirection: "row",
@@ -38,9 +44,31 @@ export const ListViewStyle = {
         marginRight: "60px"
     },
 
+    listNameField: {
+        margin: "3% 0 1.5% 0",
+    },
+
+    controlsDiv: {
+        display: "flex",
+        flexDirection: "row",
+        width: "65%",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 10%"
+    },
+
     showCompleted: {
-        alignSelf: "flex-start",
-        marginLeft: "20%"
+        // justifySelf: "flex-start",
+        // marginLeft: "20%"
+    },
+
+    addItemSpan: {
+        //justifySelf: "flex-end"
+    },
+
+    addItemButton: {
+        fontFamily: fonts.mainFontFamily,
+        fontSize: "20px"
     },
 
     itemsContainer: {
