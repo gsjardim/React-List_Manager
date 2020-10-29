@@ -1,34 +1,25 @@
 /*ListViewScreen*/
 
-import '../styles/main.css';
+import '../styles/main.css'
 import { ListViewStyle as styles } from '../styles/ListViewStyle'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import Switch from '@material-ui/core/Switch'
+import { ListRow } from '../components/listRow'
+import { ListName } from '../components/listName'
 
 export function ListViewScreen(props) {
 
-    // var handleStartButtonClick = function(){
-
-    //     /**
-    //      *  When React Router v4 renders a component, it’ll pass that component three props:
-    //      *  location, match, and history. This history prop comes from the History library 
-    //      * and has a ton of fancy properties on it related to routing. In this case, the one 
-    //      * we’re interested in is history.push. What it does is it pushes a new entry into the history stack
-    //      * - aka redirecting the user to another route.
-    //      */
-    //     props.history.push('/lists');
-    // }
 
     return (
         <div id="main-container" style={styles.mainContainer}>
             <div style={styles.menus} >
                 <div>
-                    <icon>
-                        Back arrow
-                    </icon>
-                    <span>
-                        Back to My Lists
-                    </span>
+                    <button style={styles.backArrowButton}>
+                        <FontAwesomeIcon icon={faArrowLeft} style={styles.backArrowIcon} />
+                    </button>
 
                 </div>
                 <div style={styles.rightCornerMenus}>
@@ -42,15 +33,12 @@ export function ListViewScreen(props) {
 
             </div >
 
-            <div className="list-title" style={styles.listTitle}>
-                <span style={styles.listTitleText}>List Name</span>
-                <span style={styles.editListButton}>Edit icon</span>
-            </div>
+            <ListName/>
 
             <div className="show-completed-switch"
                 style={styles.showCompleted}>
                 <span>Show completed</span>
-                <span>Switch</span>
+                <span><Switch/></span>
             </div>
 
             <div class="items-list-container" style={styles.itemsContainer}>
@@ -59,6 +47,10 @@ export function ListViewScreen(props) {
                     <span style={styles.itemDateHeader}>Date</span>
                     <span style={styles.itemStatusHeader}>Status</span>
                 </div>
+                <ListRow/>
+                <ListRow/>
+                <ListRow/>
+                <ListRow/>
 
             </div>
 

@@ -3,6 +3,7 @@ export const colors = {
     secondaryColor: "#365036",
     fontDarkColor: "#3b3b3b",
     fontLightColor: "#e0ecde",
+    rowColor: "#e0e0d1"
 }
 
 export const fonts = {

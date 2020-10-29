@@ -1,4 +1,4 @@
-import { colors, fonts } from './themes'
+import { fonts } from './themes'
 
 export const ListsMainStyle = {
 

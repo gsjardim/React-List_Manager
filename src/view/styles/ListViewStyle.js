@@ -14,12 +14,20 @@ export const ListViewStyle = {
     },
 
     menus: {
-        border: "2px solid blue",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
         padding: "0px 100px",
         width: "100%"
+    },
+
+    backArrowButton: {
+        border: "none"
+    },
+
+    backArrowIcon: {
+        color: "gray",
+        fontSize: "22px"
     },
 
     rightCornerMenus: {
@@ -28,19 +36,6 @@ export const ListViewStyle = {
 
     myAccountMenu: {
         marginRight: "60px"
-    },
-
-    listTitle: {
-        margin: "3% 0 1.5% 0",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center"
-    },
-
-    listTitleText: {
-        fontSize: "40px",
-        fontFamily: "Comic Sans MS",
-        marginRight: "20px"
     },
 
     showCompleted: {
@@ -55,7 +50,6 @@ export const ListViewStyle = {
 
     listHeader: {
         height: "40px",
-        border: "2px solid red",
         display: "grid",
         gridTemplateColumns: "3fr 1fr 1fr"
     },
