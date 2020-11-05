@@ -1,4 +1,4 @@
-import { fonts } from './themes'
+import { colors, fonts } from './themes'
 
 export const ListViewStyle = {
 
@@ -79,25 +79,27 @@ export const ListViewStyle = {
     listHeader: {
         height: "40px",
         display: "grid",
-        gridTemplateColumns: "3fr 1fr 1fr"
+        gridTemplateColumns: "3fr 1fr 1fr",
+        backgroundColor: colors.mainColor,
+        color: colors.secondaryColor,
+        borderRadius: "3px 3px 0 0",
+        fontWeight: "bold",
+        fontSize: "18px"
     },
 
     itemDescriptionHeader: {
-        backgroundColor: "yellow",
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
     },
 
     itemDateHeader: {
-        backgroundColor: "gray",
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
     },
 
     itemStatusHeader: {
-        backgroundColor: "green",
         display: "flex",
         alignItems: "center",
         justifyContent: "center"

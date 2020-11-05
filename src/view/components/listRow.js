@@ -31,20 +31,18 @@ const styles = {
     }
 }
 
-const description = "This is my first item. This app will Rock!"
-
 /**
  * This component renders a single row in the ListViewScreen.
  * Each row represents one item in the list.
  */
-export function ListRow() {
+export function ListRow(props) {
 
     return (
 
         <div style={styles.listRow}>
-            <span style={styles.itemDescription}>{description}</span>
-            <span style={styles.itemDate}>25-10-2020</span>
-            <span style={styles.itemStatus}>Pending</span>
+            <span style={styles.itemDescription}>{props.item.name}</span>
+            <span style={styles.itemDate}>{props.item.dateCreated}</span>
+            <span style={styles.itemStatus}>{props.item.status}</span>
         </div>
 
     )

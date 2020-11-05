@@ -26,7 +26,7 @@ export function CreateListButton(props) {
 
     const handleClick = () => {
         console.log("Create button was clicked")
-        props.addList(tableRow)
+        
     }
 
     return (

@@ -1,9 +1,15 @@
 
 import React from 'react'
 
-const style = {
-    tableCell: {
-        padding: "10px 0px"
+const styles = {
+
+    inputContainer: {
+        width: "100%"
+    },
+
+    inputField: {
+        border: "1px solid gray",
+        backgroundColor: "white"
     }
 }
 
@@ -15,11 +21,9 @@ export function TableRow() {
 
     return (
 
-        <tr style={{ textAlign: "center" }}>
-            <td style={style.tableCell} >Pendencias</td>
-            <td style={style.tableCell}>10</td>
-            <td style={style.tableCell}>0</td>
-        </tr>
+        <div style={styles.inputContainer}>
+            <input type="text" style={styles.inputField}/>
+        </div>
 
     )
 }

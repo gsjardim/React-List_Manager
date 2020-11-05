@@ -4,14 +4,14 @@ export const HomeStyle = {
 
 
     mainContainer: {
-        maxWidth: "70%",
-        height: "70%",
+        width: "100%",
+        height: "100%",
         marginRight: "auto",
         marginLeft: "auto",
-        marginTop: "30px",
+        //marginTop: "30px",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "spacebetween",
+        backgroundColor: colors.mainColor
 
     },
 
@@ -19,36 +19,38 @@ export const HomeStyle = {
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
-        fontFamily: "Arial, Helvetica, sansserif",
-        color: "indigo",
+        color: colors.fontDarkColor,
         fontSize: "20px",
+        backgroundColor: colors.neutralColor,
+        height: "5%",
+        padding: "1% 10%"
     },
 
 
     login: {
-        marginRight: "20px",
+        marginRight: "30px",
     },
 
     presentationBox: {
-        backgroundColor: colors.mainColor,
-        borderRadius: "10px",
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
         padding: "30px",
         height: "auto",
-        minWidth: "500px"
+        minWidth: "500px",
+        flex: "1"
     },
 
     presentationBoxH2: {
         fontFamily: fonts.mainFontFamily, /*The second parameter is a default font that will be used if the first option has a problem loading*/
-        fontSize: "250%",
+        fontSize: "300%",
         color: colors.fontLightColor,
     },
 
     boxLeftSide: {
-        marginRight: "35px",
+        height: "40%",
+        width: "30%",
     },
 
     notesImage: {
@@ -56,13 +58,14 @@ export const HomeStyle = {
     },
 
     startButton: {
-        backgroundColor: colors.fontLightColor,
+        backgroundColor: colors.neutralColor,
         color: colors.fontDarkColor,
-        fontSize: "18px",
         marginTop: "50px",
+        fontSize: "18px",
         height: "40px",
         width: "120px",
         border: "none",
+        borderRadius: "3px"
     }
 
 }
