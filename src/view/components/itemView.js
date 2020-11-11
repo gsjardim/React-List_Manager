@@ -26,7 +26,6 @@ const styles = {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        alignItems: "center",
     },
 
     datesLine: {

@@ -61,7 +61,10 @@ export function ListViewScreen(props) {
             {getModal()}
             <div style={styles.menus} >
                 <div>
-                    <button style={styles.backArrowButton}>
+                    <button
+                        style={styles.backArrowButton}
+                        onClick={()=> props.history.goBack()}
+                    >
                         <FontAwesomeIcon icon={faArrowLeft} style={styles.backArrowIcon} />
                     </button>
 
@@ -78,7 +81,7 @@ export function ListViewScreen(props) {
             </div >
             <div style={styles.listNameField}>
                 <ListName
-                    defaultName={"List Name"}
+                    defaultName={props.location.name}
                 />
             </div>
 
@@ -106,7 +109,7 @@ export function ListViewScreen(props) {
             </div>
 
             {!isLoaded ?
-                <div style={{fontSize: "25px", height: "100%", justifyContent: "center", display: "flex", flexDirection: "column"}}>
+                <div style={{ fontSize: "25px", height: "100%", justifyContent: "center", display: "flex", flexDirection: "column" }}>
                     <span>Loading...</span>
                 </div>
                 :
@@ -116,9 +119,9 @@ export function ListViewScreen(props) {
                         <span style={styles.itemDateHeader}>Date</span>
                         <span style={styles.itemStatusHeader}>Status</span>
                     </div>
-                    {listItems.map((item) => {
+                    {listItems.map((item, index) => {
                         if (item.status !== "complete" || (item.status === "complete" && showCompleted))
-                            return <ListRow item={item} />
+                            return <ListRow key={index.toString()} item={item} />
                         return null
                     })}
 

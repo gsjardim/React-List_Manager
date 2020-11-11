@@ -1,8 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { fonts } from '../styles/themes'
-import { TableRow } from './tableRow'
+import { colors, fonts } from '../styles/themes'
 
 
 const style = {
@@ -15,18 +14,15 @@ const style = {
     },
 
     plusIcon: {
-        color: "green",
+        color: colors.secondaryColor,
         marginRight: "8px"
     },
 }
 
 export function CreateListButton(props) {
 
-    var tableRow = TableRow()
-
     const handleClick = () => {
-        console.log("Create button was clicked")
-        
+        props.createList()
     }
 
     return (

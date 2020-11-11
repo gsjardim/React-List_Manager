@@ -1,4 +1,4 @@
-import { fonts } from './themes'
+import { colors, fonts } from './themes'
 
 export const ListsMainStyle = {
 
@@ -28,11 +28,38 @@ export const ListsMainStyle = {
         alignSelf: "flex-start",
         marginLeft: "10%",
         marginTop: "3%",
+        display: "flex",
+        flexDirection: "column",
     },
 
     welcomeLine: {
         fontSize: "30px",
-        marginBottom: "3%"
+        marginBottom: "20px",
+    },
+
+    createListDiv: {
+        display: "flex",
+        flexDirection: "row",
+       
+    },
+
+    newListSpan: {
+        display: "flex",
+        alignItems: "center"
+    },
+
+    listNameInput: {
+        fontSize: "20px",
+        borderRadius: "0",
+        marginLeft: "50px",
+        marginRight: "6px"
+    },
+
+    saveNewListButton: {
+        border: "none",
+        backgroundColor: colors.neutralColor,
+        padding: "5px",
+        color: colors.mainColor
     },
 
     listsContainer: {
