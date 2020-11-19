@@ -20,6 +20,7 @@ export function ListViewScreen(props) {
     const [listItems, setListItems] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showCompleted, setShowCompleted] = useState(true);
+    const [currentItem, setCurrentItem] = useState({})
 
     useEffect(() => {
         if (!isLoaded) {
@@ -28,7 +29,7 @@ export function ListViewScreen(props) {
     })
 
     const fetchItems = () => {
-        setListItems(items);
+        //setListItems(items);
         setIsLoaded(true);
     }
 
@@ -48,9 +49,34 @@ export function ListViewScreen(props) {
                 onClose={toggleModal}
                 style={styles.modalStyle}
             >
-                <ItemView />
+                <ItemView
+                    item={currentItem}
+                    getItem={(item) => {
+                        let newList = [...listItems, item]
+                        setListItems(newList)
+                    }}
+                    editItem={(object) => {
+                        let newList = listItems;
+                        for (let i = 0; i < newList.length; i++) {
+                            if (object.id == newList[i].id)
+                                newList[i] = object
+                        }
+                        setListItems(newList)
+                    }}
+                    closeModal={toggleModal.bind(this)}
+                />
             </Modal>
         )
+    }
+
+    const addNewItem = () => {
+        setCurrentItem({})
+        toggleModal()
+    }
+
+    const openItem = (item) => {
+        setCurrentItem(item)
+        toggleModal()
     }
 
 
@@ -63,7 +89,7 @@ export function ListViewScreen(props) {
                 <div>
                     <button
                         style={styles.backArrowButton}
-                        onClick={()=> props.history.goBack()}
+                        onClick={() => props.history.goBack()}
                     >
                         <FontAwesomeIcon icon={faArrowLeft} style={styles.backArrowIcon} />
                     </button>
@@ -82,6 +108,9 @@ export function ListViewScreen(props) {
             <div style={styles.listNameField}>
                 <ListName
                     defaultName={props.location.name}
+                    placeholder=""
+                    getName={(_value) => { return }}
+                    editMode={false}
                 />
             </div>
 
@@ -101,7 +130,7 @@ export function ListViewScreen(props) {
                 <span style={styles.addItemSpan}>
                     <button
                         style={styles.addItemButton}
-                        onClick={() => toggleModal()}
+                        onClick={() => addNewItem()}
                     >
                         Add Item
                     </button>
@@ -120,8 +149,13 @@ export function ListViewScreen(props) {
                         <span style={styles.itemStatusHeader}>Status</span>
                     </div>
                     {listItems.map((item, index) => {
-                        if (item.status !== "complete" || (item.status === "complete" && showCompleted))
-                            return <ListRow key={index.toString()} item={item} />
+                        if (item.status !== "complete" || (item.status === "complete" && showCompleted)) {
+                            return (
+                                <div onClick={() => openItem(item)}>
+                                    <ListRow key={index.toString()} item={item} />
+                                </div>
+                            )
+                        }
                         return null
                     })}
 

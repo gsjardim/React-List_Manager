@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { colors } from '../styles/themes'
 import { ListName } from './listName'
 
@@ -12,13 +12,23 @@ const styles = {
         flexDirection: "column",
         fontSize: "20px",
         marginRight: "auto",
-        marginLeft: "auto",
-        padding: "2% 3%"
+        marginLeft: "auto"
+    },
+
+    closeModal: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "flex-end",
+        padding: "1% 1% ",
+        fontWeight: "bold",
+        color: colors.mainColor
+
     },
 
     innerContainer: {
         display: "flex",
         flexDirection: "column",
+        padding: "2% 3%"
     },
 
     headerLine: {
@@ -56,7 +66,8 @@ const styles = {
 
     detailsTextArea: {
         width: "100%",
-        borderColor: colors.secondaryColor
+        borderColor: colors.secondaryColor,
+        fontSize: "20px"
     },
 
     bottomControls: {
@@ -70,23 +81,78 @@ const styles = {
     },
 
     saveButton: {
-        
+
     }
 }
 
 
 export const ItemView = (props) => {
+    let itemData = props.item
+    for(let key in itemData){
+        console.log(key + ": " + itemData[key])
+    }
+    
+    const [description, setDescription] = useState(itemData.description || "")
+    const [status, setStatus] = useState(itemData.status || "pending")
+    const [attachments, setAttachments] = useState(itemData.attachments || [])
+    const [dueDate, setDueDate] = useState(itemData.dueDate || "")
+    const [details, setDetails] = useState(itemData.details || "")
+
+    const handleSave = () => {
+        if (isValidated()) {            
+            if(Object.keys(itemData).length > 0){
+                itemData.description = description;
+                itemData.status = status;
+                itemData.attachments = attachments;
+                itemData.dueDate = dueDate;
+                itemData.details = details;
+
+                props.editItem(itemData);
+
+            }
+            else {
+                let newItem = {
+                    id: new Date().getTime(),
+                    description: description,
+                    listId: "",
+                    status: status,
+                    attachments: attachments,
+                    dueDate: dueDate,
+                    dateCreated: new Date().toLocaleDateString(),
+                    details: details
+                }
+                props.getItem(newItem)
+            }
+            
+            props.closeModal()
+        }
+    }
+
+    const isValidated = () => {
+
+        if (description === "") {
+            alert("Please enter a new name for your item.")
+            return
+        }
+        return true
+    }
 
     return (
         <div
             id="item-modal-container"
             style={styles.containerStyle}
         >
+            <div style={styles.closeModal}>
+                <span onClick={()=>props.closeModal()}>X</span>
+            </div>
             <div style={styles.innerContainer}>
                 <div style={styles.headerLine}>
                     <span style={styles.listNameField}>
                         <ListName
-                            defaultName={"Item Name"}
+                            defaultName={itemData.description || ""}
+                            placeholder="Enter item name"
+                            getName={(value) => setDescription(value)}
+                            editMode={ Object.keys(itemData).length > 0 ? false : true}
                         />
                     </span>
                     <span>
@@ -95,12 +161,9 @@ export const ItemView = (props) => {
 
                 </div>
                 <div style={styles.datesLine}>
-                    <span style={styles.dateCreatedText}>
-                        Date created: 01-Nov-2020
-                </span>
                     <span>
                         Due date: 10-Nov-2020
-                </span>
+                    </span>
 
                 </div>
 
@@ -112,10 +175,13 @@ export const ItemView = (props) => {
                 <div style={styles.detailsDiv}>
                     <label for="details" style={styles.detailsLabel}>Details</label>
                     <textarea
+                        value={details}
                         type="text"
                         name="details"
                         style={styles.detailsTextArea}
                         rows="5"
+                        onChange={(text) => setDetails(text.target.value)}
+                        
                     />
                 </div>
 
@@ -124,7 +190,12 @@ export const ItemView = (props) => {
                         <input type="checkbox" name="done" />
                         <label for="done">Done</label>
                     </span>
-                    <button style={styles.saveButton}>Save</button>
+                    <button
+                        style={styles.saveButton}
+                        onClick={() => handleSave()}
+                    >
+                        Save
+                    </button>
                 </div>
             </div>
 

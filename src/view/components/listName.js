@@ -48,12 +48,17 @@ const styles = {
 }
 
 export function ListName(props) {
-
+    
     const [name, setName] = useState(props.defaultName);
-    const [isEditMode, toggleEditMode] = useState(false);
+    const [isEditMode, toggleEditMode] = useState(props.editMode);
 
     const handleClick = () => {
-        toggleEditMode(!isEditMode)
+       toggleEditMode(!isEditMode)
+    }
+
+    const updateState = (value) => {
+        setName(value);
+        props.getName(value)
     }
 
 
@@ -64,7 +69,8 @@ export function ListName(props) {
                     <input
                         style={styles.nameInput}
                         value={name}
-                        onChange={(text) => setName(text.target.value)}
+                        placeholder={props.placeholder}
+                        onChange={(text) => updateState(text.target.value)}
                     />
                     <button
                         style={styles.saveButton}

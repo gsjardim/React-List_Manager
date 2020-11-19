@@ -40,7 +40,7 @@ export function ListRow(props) {
     return (
 
         <div style={styles.listRow}>
-            <span style={styles.itemDescription}>{props.item.name}</span>
+            <span style={styles.itemDescription}>{props.item.description}</span>
             <span style={styles.itemDate}>{props.item.dateCreated}</span>
             <span style={styles.itemStatus}>{props.item.status}</span>
         </div>

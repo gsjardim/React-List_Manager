@@ -12,7 +12,7 @@ export function ListsMainScreen() {
     let userName = "Guilherme";
 
     const [lists, setLists] = useState([]);
-    const [name, setName] = useState('Enter the list name');
+    const [name, setName] = useState('');
     const [createActive, setCreateActive] = useState(false);
     const [color, setColor] = useState("white");
     const [anchorEl, setAnchorEl] = useState(null);
@@ -35,22 +35,30 @@ export function ListsMainScreen() {
     }
 
     const addList = (listName) => {
-        for (let list of lists) {
-            if (list.name === listName) {
-                alert("You already have a list named " + list.name)
-                return
+        if (listName !== "") {
+            for (let list of lists) {
+                if (list.name === listName) {
+                    alert("You already have a list named " + list.name)
+                    return
+                }
             }
-        }
 
-        let tableRow = {
-            name: listName,
-            items: 0,
-            overdueItems: 0
-        }
+            let created = new Date().toLocaleDateString()
 
-        let newLists = [...lists, tableRow]
-        setLists(newLists)
-        setCreateActive(false)
+            let tableRow = {
+                name: listName,
+                items: 0,
+                date: created
+            }
+
+            let newLists = [...lists, tableRow]
+            setLists(newLists)
+            setName("")
+            setCreateActive(false)
+        }
+        else {
+            setCreateActive(false)
+        }
     }
 
     return (
@@ -98,6 +106,7 @@ export function ListsMainScreen() {
                             <input
                                 style={styles.listNameInput}
                                 value={name}
+                                placeholder={"Enter the list name"}
                                 onChange={(text) => setName(text.target.value)}
                             />
                             <button
@@ -123,7 +132,7 @@ export function ListsMainScreen() {
                                     Items
                             </th>
                                 <th>
-                                    Overdue items
+                                    Date created
                             </th>
                             </tr>
                         </thead>
@@ -131,14 +140,14 @@ export function ListsMainScreen() {
                             {
                                 lists.map((row, index) => {
                                     return (
-                                        <tr 
+                                        <tr
                                             style={{ textAlign: "center", padding: "10px 0" }}
                                             key={index.toString()}
-                                            >
+                                        >
                                             <td><Link to={{
                                                 pathname: "/my-list",
                                                 name: row.name
-                                            }}>{row.name}</Link></td><td>{row.items}</td><td>{row.overdueItems}</td>
+                                            }}>{row.name}</Link></td><td>{row.items}</td><td>{row.date}</td>
                                         </tr>
                                     )
                                 })

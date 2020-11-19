@@ -1,0 +1,9 @@
+Next tasks:
+
+Add redux state to manage lists and items
+Add functionality to Due Date, Done checkbox and attachments
+Create database SQLite
+Create backend in Node JS
+Integrate front end and backend
+improve App look
+Make the app style responsive for mobile
