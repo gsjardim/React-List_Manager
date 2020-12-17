@@ -6,12 +6,26 @@ import Menu from '@material-ui/core/Menu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { Fade, MenuItem } from '@material-ui/core'
+import { connect } from 'react-redux'
+import { postList } from '../../redux/ActionCreator'
 
-export function ListsMainScreen() {
+function mapStateToProps(state){
+    return {
+        lists: state.lists
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        addNewList: list => dispatch(postList(list))
+    }
+}
+
+function ListsMainScreen(props) {
     //Temporary data
     let userName = "Guilherme";
 
-    const [lists, setLists] = useState([]);
+    //const [lists, setLists] = useState([]);
     const [name, setName] = useState('');
     const [createActive, setCreateActive] = useState(false);
     const [color, setColor] = useState("white");
@@ -36,7 +50,7 @@ export function ListsMainScreen() {
 
     const addList = (listName) => {
         if (listName !== "") {
-            for (let list of lists) {
+            for (let list of props.lists) {
                 if (list.name === listName) {
                     alert("You already have a list named " + list.name)
                     return
@@ -45,14 +59,16 @@ export function ListsMainScreen() {
 
             let created = new Date().toLocaleDateString()
 
-            let tableRow = {
+            let list = {
                 name: listName,
                 items: 0,
                 date: created
             }
 
-            let newLists = [...lists, tableRow]
-            setLists(newLists)
+            props.addNewList(list)
+
+            //let newLists = [...lists, list]
+            //setLists(newLists)
             setName("")
             setCreateActive(false)
         }
@@ -95,7 +111,7 @@ export function ListsMainScreen() {
             {/**This is where the welcome message is shown, with the add new list button right below it */}
             <div style={styles.subHeaderContainer}>
                 <span style={styles.welcomeLine}>
-                    {`Welcome ${userName}. You have ${lists.length} lists.`}
+                    {`Welcome ${userName}. You have ${props.lists.length} lists.`}
                 </span>
                 <div style={styles.createListDiv}>
                     <CreateListButton createList={handleCreate.bind(this)} />
@@ -121,7 +137,7 @@ export function ListsMainScreen() {
             </div>
 
             <div id="lists-container" style={styles.listsContainer}>
-                {lists.length > 0 ?
+                {props.lists.length > 0 ?
                     <table style={styles.table}>
                         <thead>
                             <tr style={{ border: "2px solid gray", backgroundColor: "silver" }}>
@@ -138,7 +154,7 @@ export function ListsMainScreen() {
                         </thead>
                         <tbody>
                             {
-                                lists.map((row, index) => {
+                                props.lists.map((row, index) => {
                                     return (
                                         <tr
                                             style={{ textAlign: "center", padding: "10px 0" }}
@@ -172,3 +188,5 @@ export function ListsMainScreen() {
         </div>
     )
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListsMainScreen);
